@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rushmore Design Blog
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+Rushmore Design Blog is a full-stack web application built with Next.js and Supabase, designed to showcase design-related posts with robust commenting and content management features.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend**: Next.js 14
+- **Backend**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Core Functionality
+- Create, read, update, and delete (CRUD) blog posts
+- Categorize posts
+- Add and manage comments
+- Responsive design
+- Sorting posts by date
 
-## Learn More
+### Detailed Features
+- Dynamic routing for individual posts
+- Server-side rendering
+- Integrated database with Supabase
+- Comment system with likes
+- User-friendly interface
 
-To learn more about Next.js, take a look at the following resources:
+## Database Schema
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tables
+- **posts**
+  - `id`: UUID (Primary Key)
+  - `title`: Text
+  - `content`: Text
+  - `author`: Text
+  - `createdAt`: Timestamp
+  - `categoryId`: Foreign Key to categories
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **categories**
+  - `id`: UUID (Primary Key)
+  - `name`: Text
+  - `description`: Text
 
-## Deploy on Vercel
+- **comments**
+  - `id`: UUID (Primary Key)
+  - `content`: Text
+  - `likes`: Integer
+  - `createdAt`: Timestamp
+  - `postId`: Foreign Key to posts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Assignment Reflection
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Achievements
+- [x] Implemented full CRUD functionality for posts
+- [x] Created a robust commenting system
+- [x] Implemented post sorting
+- [x] Developed dynamic routing for posts
+- [x] Integrated Supabase for database management
+
+### Challenges
+- Handling server-side and client-side state management
+- Implementing secure database operations
+- Managing complex form submissions and validations
+
+### Learning Outcomes
+- Deep understanding of Next.js server actions
+- Improved skills in database design
+- Enhanced knowledge of full-stack development principles
+
+## Setup and Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/rushmore-design-blog.git
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables
+   Create a `.env.local` file with:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+   ```
+
+4. Run the development server
+   ```bash
+   npm run dev
+   ```
+
+## Deployment
+
+Deployed on Vercel:
+- Automatically deploys from the main branch
+- Environment variables configured in Vercel dashboard
+
+## Future Improvements
+- Implement user authentication
+- Add rich text editing for posts
+- Create more advanced filtering and search functionality
+- Implement pagination for posts and comments
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
