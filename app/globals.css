@@ -1,0 +1,537 @@
+:root {
+    /* Rushmore color palette */
+    --gold: #E6C67C;
+    --green: #023C3D;
+    --navy: #112542;
+    --red: #D01C1F;
+    
+    /* Derived colors for UI elements */
+    --primary: var(--navy);
+    --primary-hover: #1B3968;
+    --secondary: var(--green);
+    --accent: var(--red);
+    --background: #FFFFFF;
+    --background-alt: var(--gold);
+    --text: #111111;
+    --text-light: #444444;
+    --text-on-dark: #FFFFFF;
+    --border: #DDDDDD;
+    --success: #2DA44E;
+    --error: var(--red);
+    --transition-speed: 0.3s;
+    --box-shadow: none;
+    --border-radius: 0px;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: var(--navy);
+      --background-alt: #0A182F;
+      --text: #F0F0F0;
+      --text-light: #BBBBBB;
+      --border: #2D3748;
+    }
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  body {
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
+  }
+  
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Layout & Navigation */
+  header {
+    background-color: var(--gold);
+    padding: 20px 0;
+    margin-bottom: 30px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: var(--navy);
+    font-weight: 500;
+  }
+  
+  main {
+    padding: 40px 0;
+    min-height: calc(100vh - 160px);
+  }
+  
+  footer {
+    background-color: var(--navy);
+    padding: 20px 0;
+    color: var(--text-on-dark);
+    text-align: center;
+  }
+  
+  /* Page Titles */
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--navy);
+    font-weight: 700;
+    border-left: 8px solid var(--gold);
+    padding-left: 15px;
+  }
+  
+  /* Buttons */
+  button, .button {
+    display: inline-block;
+    background-color: var(--navy);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  button:hover, .button:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .secondaryButton, .cancelButton {
+    background-color: var(--background);
+    border: 2px solid var(--navy);
+    color: var(--navy);
+  }
+  
+  .secondaryButton:hover, .cancelButton:hover {
+    background-color: var(--background-alt);
+    color: var(--navy);
+  }
+  
+  .deleteButton {
+    background-color: var(--red);
+  }
+  
+  .deleteButton:hover {
+    background-color: #B00A0D;
+  }
+  
+  /* Form Styles */
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  .formLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  
+  .formInput, .formTextarea, .formSelect {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--navy);
+    background-color: var(--background);
+    color: var(--text);
+    font-family: inherit;
+    transition: border-color var(--transition-speed) ease;
+  }
+  
+  .formInput:focus, .formTextarea:focus, .formSelect:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  
+  .formTextarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .formActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Posts Grid */
+  .postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .postCard {
+    background-color: var(--background);
+    border: 2px solid var(--navy);
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  .postCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .postCardHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: var(--navy);
+    color: var(--text-on-dark);
+    font-size: 0.875rem;
+  }
+  
+  .postTitle {
+    padding: 20px 15px 10px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--gold);
+  }
+  
+  .postMeta {
+    padding: 0 15px 15px;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .postActions {
+    padding: 15px;
+    border-top: 2px solid var(--navy);
+    display: flex;
+    gap: 10px;
+  }                                              
+  
+  /* Control Section */
+  .controlsSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--gold);
+    padding: 15px;
+  }
+  
+  .sortingControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Comment Styles */
+  .commentSectionContainer {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--navy);
+  }
+  
+  .commentSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .commentSectionHeader.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .commentsTitle {
+    color: var(--navy);
+    border-left: 8px solid var(--gold);
+    padding-left: 15px;
+  }
+  
+  .commentForm {
+    margin-bottom: 30px;
+    background-color: var(--gold);
+    padding: 20px;
+  }
+  
+  .commentInput {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--navy);
+    background-color: var(--background);
+    color: var(--text);
+    font-family: inherit;
+    margin-bottom: 10px;
+    transition: border-color var(--transition-speed) ease;
+  }
+  
+  .commentInput:focus {
+    outline: none;
+    border-color: var(--green);
+  }
+  
+  .submitCommentButton {
+    background-color: var(--navy);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  .submitCommentButton:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  /* Comment Carousel */
+  .commentCarousel {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background);
+    border: 2px solid var(--navy);
+  }
+  
+  .carouselContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .commentViewport {
+    flex: 1;
+    overflow: hidden;
+    min-height: 150px;
+  }
+  
+  .commentCard {
+    padding: 20px;
+    background-color: var(--background);
+    border-left: 8px solid var(--gold);
+  }
+  
+  .commentContent {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  .commentMeta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    font-size: 0.875rem;
+  }
+  
+  .carouselButton {
+    background: none;
+    border: none;
+    color: var(--navy);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0 10px;
+    z-index: 1;
+  }
+  
+  .carouselButton:hover {
+    color: var(--gold);
+  }
+  
+  .commentIndicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  
+  .indicatorDot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--navy);
+    opacity: 0.3;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+  }
+  
+  .indicatorDot.active {
+    opacity: 1;
+    background-color: var(--gold);
+  }
+  
+  /* Category styles */
+  .categoriesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .categoryCard {
+    background-color: var(--background);
+    border: 2px solid var(--navy);
+    padding: 20px;
+    transition: background-color var(--transition-speed) ease;
+  }
+  
+  .categoryCard:hover {
+    background-color: var(--gold);
+  }
+  
+  .categoryName {
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  
+  .categoryDescription {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .categoryPostCount {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  /* Post detail styles */
+  .postDetailContainer {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .postArticle {
+    margin-top: 30px;
+    border: 2px solid var(--white);
+  }
+  
+  .postHeader {
+    background-color: var(--navy);
+    padding: 20px;
+    color: var(--text-on-dark);
+  }
+  
+  .postCategory {
+    display: inline-block;
+    background-color: var(--gold);
+    color: var(--navy);
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .postContent {
+    padding: 30px;
+  }
+  
+  .postContent p {
+    margin-bottom: 20px;
+  }
+  
+  /* Comment list */
+  .commentListContainer {
+    margin-top: 30px;
+  }
+  
+  .commentListHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--navy);
+  }
+  
+  .commentListTitle {
+    color: var(--navy);
+  }
+  
+  .commentItem {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid var(--navy);
+  }
+  
+  .likeButton {
+    background: none;
+    border: none;
+    color: var(--red);
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .likeButton:hover {
+    opacity: 0.8;
+  }
+  
+  /* Navigation */
+  .backLink {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  
+  /* Utility classes */
+  .noPostsMessage, .noComments {
+    padding: 30px;
+    text-align: center;
+    background-color: var(--gold);
+    color: var(--navy);
+    font-weight: 500;
+  }
+  
+  /* Toggle comment button */
+  .toggleCommentsButton {
+    background-color: var(--gold);
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    padding: 8px 15px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .toggleCommentsButton:hover {
+    background-color: var(--navy);
+    color: var(--text-on-dark);
+  }
